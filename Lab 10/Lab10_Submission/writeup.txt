@@ -1,0 +1,18 @@
+Lab Members: Zachary S & Fahia Tabassum
+
+MILESTONE 1:
+- Created StackException, a custom Exception.
+- Used when you try to push to a Stack at max capacity.
+
+MILESTONE 2:
+- Created the Stack data structure which implements Nodes.
+- pop() removes and returns the data of the object at the top of the Stack.
+- push() adds an element to the Stack
+
+MILESTONE 3:
+- Created Postfix class with one method: evaluate().
+- evaluate() evaluates expressions of 7 elements or less.
+- Added throws StackException in the push() method for Stack.
+
+MILESTONE 4:
+- Tested StackException on Postfix by attempting to make a Stack of size 11.

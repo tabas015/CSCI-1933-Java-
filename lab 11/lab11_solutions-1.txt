@@ -1,0 +1,339 @@
+NOTE: The solutions posted here are not necessarily the only correct
+      answers; if you are wondering if your answer is correct, feel
+      free to test it to verify or to ask a TA.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Question 1: LinkedLists
+--------------------------------------------------------------------------------------------------------------------------------------
+1.1
+// Note: this method assumes a headed list
+public void removeEvery(int n){
+    if (n == 1) {
+        head.setNext(null);
+    } else if (n > 0) {
+        int index = 0;
+        Node<T> trailer = head;
+        Node<T> ptr = head.getNext();
+        while (ptr != null) {
+            if (index == n - 1) {
+                trailer.setNext(ptr.getNext());
+            } else {
+                trailer = ptr;
+            }
+            ptr = ptr.getNext();
+            index = (index + 1) % n;
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+1.2
+//Note: this method assumes a headed list
+public LinkedList<LinkedList<T>> extractGroupsOf(int n) {
+    LinkedList<LinkedList<T>> outerList = new LinkedList<>();
+	if (n == 0) {
+		return outerList;
+	}
+    LinkedList<T> currentList = outerList.head;
+    Node<T> currentNode = head.getNext(); //first node of original list
+    
+	int count = 0;
+    while (currentNode != null) {  //counts the number of nodes in the list
+        count++;
+        currentNode = currentNode.getNext();
+    }
+
+    currentNode = head.getNext();
+    LinkedList<T> innerList = new LinkedList<>();
+    Node<T> innerListCurrentNode = innerList.head;
+
+	for (int i = 0; i < count; i++) {
+		innerListCurrentNode.setNext(currentNode);
+		innerListCurrentNode = innerListCurrentNode.getNext();
+		currentNode = currentNode.getNext();
+
+		if ((i % n) == (n - 1)) {  //adds the new list to the group list
+			innerListCurrentNode.setNext(null);
+			currentList.setNext(innerList);
+			currentList = currentList.getNext();
+			innerList = new LinkedList<>();
+			innerListCurrentNode = newList.head;
+		}
+	}
+	currentList.setNext(newList);
+
+	return outerList;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Question 2: Queues
+--------------------------------------------------------------------------------------------------------------------------------------
+2.1
+import java.util.Stack;
+
+public class StackedQueue<T> {
+	private Stack<T> stack = new Stack<>();
+
+	public void enqueue(T element){
+		stack.add(element);
+	}
+
+	public T dequeue(){
+		T element = null;
+		if(!isEmpty()){
+			Stack<T> tmp = new Stack<>();
+			while(!stack.isEmpty()){
+				tmp.add(stack.pop());
+			}
+			element = tmp.pop();
+			while(!tmp.isEmpty()){
+				stack.add(tmp.pop());
+			}
+		}
+		return element;
+	}
+
+	public T peek(){
+
+		Stack<T> tmp = new Stack<>();
+		while(!stack.isEmpty()){
+			tmp.add(stack.pop());
+		}
+		T element = tmp.peek();
+		while(!tmp.isEmpty()){
+			stack.add(tmp.pop());
+		}
+		return element;
+	}
+
+	public boolean isEmpty(){
+		return stack.isEmpty();
+	}
+
+	public static void main(String[] args) {
+		StackedQueue<String> test1 = new StackedQueue<>();
+		test1.enqueue("a");
+		test1.enqueue("b");
+		test1.enqueue("c");
+		test1.enqueue("d");
+
+		System.out.println(test1.isEmpty());
+		System.out.println(test1.peek());
+		System.out.println(test1.dequeue());
+		System.out.println(test1.dequeue());
+		System.out.println(test1.dequeue());
+		System.out.println(test1.dequeue());
+		System.out.println(test1.isEmpty());
+		System.out.println(test1.dequeue());
+	}
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+2.2
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+public boolean palindromeTest(String word) {
+	Queue<Character> q = new ArrayDeque<String>();
+
+	for (int i = word.length-1; i >= 0; i--) {
+		q.add(word.charAt(i));
+	}
+
+	String reverseString = "";
+
+	while (!q.isEmpty()) {
+		reverseString += q.remove();
+	}
+
+	if (word.equals(reverseString)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Question 3: Stacks
+--------------------------------------------------------------------------------------------------------------------------------------
+3.1
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+public class QueuedStack<T> {
+
+	Queue<T> queue = new ArrayDeque<T>();
+
+	public void push(T element) {
+		Queue<T> temp = new ArrayDeque<T>();
+		temp.add(element);
+		while(!queue.isEmpty()){
+			temp.add(queue.poll());
+		}
+		queue = temp;
+	}
+
+	public T pop() {
+		return queue.poll();
+	}
+
+	public T top() {
+		return queue.peek();
+	}
+
+	public boolean isEmpty() {
+		return queue.isEmpty();
+	}
+
+	public static void main(String[] args) {
+		QueuedStack<String> test1 = new QueuedStack<>();
+		test1.push("a");
+		test1.push("b");
+		test1.push("c");
+		test1.push("d");
+
+		System.out.println(test1.isEmpty());
+		System.out.println(test1.top());
+		System.out.println(test1.pop());
+		System.out.println(test1.pop());
+		System.out.println(test1.pop());
+		System.out.println(test1.pop());
+		System.out.println(test1.isEmpty());
+		System.out.println(test1.pop());
+	}
+
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+3.2
+import java.util.Stack;
+
+public class HackStack<T> {
+private Stack<T> stack = new Stack<>();
+
+	public void push(T element){
+		stack.push(element);
+	}
+
+	public T pop(){
+		if(isEmpty()){
+			return null;
+		}
+		return stack.pop();
+	}
+
+	public T pop(int n) {
+		T element = null;
+		if (!isEmpty()){
+			Stack<T> temp = new Stack<>();
+			int count = 0;
+			while(count < n && !stack.isEmpty()){
+				temp.add(stack.pop());
+				count++;
+			}
+			element = stack.pop();
+			while(!temp.isEmpty()){
+				stack.add(temp.pop());
+			}
+		}
+		return element;
+	}
+
+	public T peek(){
+		return stack.peek();
+	}
+
+	public boolean isEmpty(){
+		return stack.isEmpty();
+	}
+
+	public static void main(String[] args) {
+		HackStack<String> test1 = new HackStack<>();
+		test1.push("a");
+		test1.push("b");
+		test1.push("c");
+		test1.push("d");
+
+		System.out.println(test1.isEmpty());
+		System.out.println(test1.peek());
+		System.out.println(test1.pop(2));
+		System.out.println(test1.pop());
+		System.out.println(test1.pop());
+		System.out.println(test1.pop());
+		System.out.println(test1.isEmpty());
+		System.out.println(test1.pop());
+	}
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Question 4: Exceptions
+--------------------------------------------------------------------------------------------------------------------------------------
+
+4.1 When an exception is thrown, the program may halt as a result of the bad input.
+	If a value is returned on bad input, it may not be obvious that the input was bad.
+
+4.2 A checked Java exception is an exception that you must handle when you write code
+	that may encounter it. An unchecked exception is encountered during runtime.
+
+4.3 (Example answer): NullPointerException: thrown when trying to call a method on a null object
+	IllegalArgumentException: thrown when some user input to a method was invalid
+
+4.4 NullPointerException on line 5 (if there was a null object in one of the indexes accessed)
+	IndexOutOfBoundsException on line 5 (if the size of array is less than 10)
+
+4.5 (Example answers): add a null element to some index, add a new item at an index
+	greater than size, add a new item at a negative index, remove an element that
+	isn't in the list, remove a null element
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Question 5: Complexity Analysis
+--------------------------------------------------------------------------------------------------------------------------------------
+
+5.1 containsMatch runs in O(n^2) time. When n is vary small, or close to the length of the array, 
+	containsMatch will run in O(n) time. If n is about half of the array length, containsMatch 
+	will run in O(n^2) time.
+
+5.2 In most cases, the add method runs in O(1) time. However in the case where the list needs 
+	to be resized, doubleListLength runs in O(n) time because it has to copy over all of the 
+	elements into the new array, so the add method will run in O(n) time. 
+	Therefore, the answer is O(n).
+
+5.3 One of the benefits of ArrayLists is the get(index) method is O(1) where in LinkedLists the get(index)
+	method is O(n). One of the benefits of LinkedLists is the add(T element) method can be O(1) if you keep 
+	track of the end of the list, where for ArrayLists, the add(T element) method is often O(1) but 
+	in the worst case, the array must be resized and the contents have to be copied over, so it is 
+	O(n). 
+
+5.4 Add a member variable Node<T> tail to LinkedList that keeps track of the last node added. The new 
+	add would look something like this:
+	public void add(Node<T> newNode) {
+		tail.setNext(newNode);
+		tail = tail.getNext();
+	}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Question 6: Other Concepts
+--------------------------------------------------------------------------------------------------------------------------------------
+
+6.1 T means generic. You would want to use it, for example, if you want to create a
+	collection that is able to hold any specific type of object.
+
+6.2 (Example answer) An abstract class can have its own attributes and implemented methods,
+	while an interface only has method stubs. You might want to use an abstract class if
+	you will have multiple classes that all share logic for some methods, while having
+	different logic for others. You may want to use an interface if it's not a clear
+	parent of the classes that will be implementing it, but those classes should
+	still have some basic logic in common.
+
+6.3 A comparable object is capable of comparing itself with another object. The class itself must 
+	implement the Comparable interface to compare its interfaces. Comparator is external to the 
+	element type we are comparing. It is a separate class, and its compare method takes two objects 
+	of a specific class.
+
+6.4 == compares by memory location; .equals() compares by the implemented .equals() method.
+	In general, when checking if two objects are equivalent, you should use the .equals()
+	method, while you should use == to see if you actually have two pointers to the exact
+	same object.
+
+6.4 Line 2 (cannot instantiate an interface), line 6 (Bicycle does not implement Vehicle)
