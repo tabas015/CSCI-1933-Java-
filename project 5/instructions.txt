@@ -1,0 +1,13 @@
+1. Extract folder 'hashTable' from archive you received.
+2. Run Intellij Idea.
+3. In INtellij Idea choose File > Open..
+4. Choose folder 'hashTable', you have just extracted. Select "New window"/"This window" in popup dialog. It doesn't matter.
+5. In the left part of the screen you should see Project file tree. Find there src/TextScan.java.
+6. Right-click on src/TextScan.java. Choose 'Run TextScan.main()'. That's all, the program should be running now.
+
+
+
+** You must pass the input file to the program.
+To do it click on “Configurations” drop down list (possibly it is written “Main” there on your screen) in the top right part of IntelliJ interface. In the drop down click “edit configurations”. Now you can edit running configuration of your program. In field “program arguments” write name of text file you want to process with your program: for example, “that_bad.txt”.
+
+Then click Apply and Ok. Now click on the green triangle “run” near drop down list to run chosen configuration.
