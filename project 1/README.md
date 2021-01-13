@@ -1,6 +1,6 @@
 # Parts of this Problem
 ## Problem 1 (Random Numbers)
-###### In this part of the problem, an instantiable Random class has been programmed for generating random numbers. The methods which have been created in the Random class include:
+###### **In this part of the problem, an instantiable Random class has been programmed for generating random numbers. The methods which have been created in the Random class include:**
 1. public Random(int p1, int p2, int m): Set up a random number generator with the given constants. 
 2. public void setSeed(int seed): Set the seed of the random number generator.
 3. public int getMaximum(): Return the value of M for this random number generator.
