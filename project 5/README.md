@@ -1,13 +1,13 @@
-#Introduction 
+# Introduction 
 
-# Group members
+## Group members
 **Ladan Abdi (abdix213) & Fahia Tabassum (tabas015)**
 
 
-# To compile:
+## To compile:
 	-check the instructions.txt
 	
-# To run:
+## To run:
 	- check the instructions.txt
 
-# Credit -> We also used and obtained the TextScan.java file from the CSCI 1933 Spring 2020 Canvas Page.
+## Credit -> We also used and obtained the TextScan.java file from the CSCI 1933 Spring 2020 Canvas Page.
