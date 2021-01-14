@@ -8,7 +8,7 @@ and a stack structure to randomly generate new mazes.**
 
 
 ## Group members 
-	**Fahia Tabassum (tabas015) & Ladan Abdi (abdix213)**
+	######Fahia Tabassum (tabas015) & Ladan Abdi (abdix213)
 
 ## To compile: javac MyMaze.java
 	
