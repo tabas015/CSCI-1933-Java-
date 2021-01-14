@@ -19,4 +19,5 @@
 6. public boolean equals(Object other): This method should return true if the current quadratic function is equal to other and false otherwise.
 7.  A main method: Like the previous class to demonstrate that all the methods work via well- documented, well-formatted tests. 
 # How to compile and run the programs
-javac 
+compile by this command:  javac Random.class
+run by this command:      java Random
