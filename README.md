@@ -5,10 +5,10 @@
     Introduction to Time Complexity and Space Complexity
   
 # The work Distributions
- 5 projects had been completed in Spring 2020
+ ## 5 projects had been completed in Spring 2020
 
 # Created Using:
-  - Java
+  ## - Java
 
 # Contact
 **fahiatabass000@gmail.com**
