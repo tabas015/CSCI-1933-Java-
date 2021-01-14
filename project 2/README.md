@@ -10,4 +10,4 @@
 ## To run:
 	- java BattleboardGame
 ## Directory 
-  /requirements/proj 2/Archive 2
+  **~/Requirements/Proj 2/Archive 2**
